@@ -8,12 +8,12 @@ import numpy
 def compute_height(n, parents):
     max_height = 0
     
-    nodes = []
+    unique_nodes = []
     for i in range(n):
-        if parents[i] not in nodes:
-            nodes.append(parents[i])
+        if parents[i] not in unique_nodes:
+            unique_nodes.append(parents[i])
     
-    max_height = len(nodes)
+    max_height = len(unique_nodes)
 
     return max_height
 
