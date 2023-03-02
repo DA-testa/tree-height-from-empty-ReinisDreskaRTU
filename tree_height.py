@@ -31,6 +31,8 @@ def main():
         file_name = input("Enter input file name: ")
         if ".a" in file_name:
             return
+        if "test/" not in file_name:
+            file_name = "test/" + file_name
         with open(file_name, 'r') as file:
             n = int(file.readline())
             parents = numpy.array(list(map(int, file.readline().split())))
