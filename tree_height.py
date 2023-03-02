@@ -1,5 +1,6 @@
 # python3
 
+import os
 import sys
 import threading
 import numpy
@@ -29,10 +30,16 @@ def main():
 
     elif input_type[:1] == 'F':
         file_name = input("Enter input file name: ")
-        if ".a" in file_name:
-            return
+
         if "test/" not in file_name:
             file_name = "test/" + file_name
+        
+        if not os.path.isfile(file_name) or os.path.getsize(file_name) == 0:
+            print("Error: Invalid input file")
+            return
+        if ".a" in file_name:
+            return
+        
         with open(file_name, 'r') as file:
             n = int(file.readline())
             parents = numpy.array(list(map(int, file.readline().split())))
