@@ -20,16 +20,16 @@ def compute_height(n, parents):
 
 
 def main():
-    input_type = input("Enter input type (I for keyboard, F for file): ")
+    input_type = input()
     if input_type[:1] == 'I':
-        n = int(input("Enter node count: "))
-        parents_input = input("Enter nodes: ")
+        n = int(input())
+        parents_input = input()
         parents = numpy.array(list(map(int, parents_input.split())))
         height = compute_height(n, parents)
         print(height)
 
     elif input_type[:1] == 'F':
-        file_name = input("Enter input file name: ")
+        file_name = input()
 
         if "test/" not in file_name:
             file_name = "test/" + file_name
