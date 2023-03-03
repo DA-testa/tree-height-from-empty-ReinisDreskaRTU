@@ -7,16 +7,24 @@ import numpy
 
 
 def compute_height(n, parents):
-    max_height = 0
+    nodes = [[] for _ in range(n)]
     
-    unique_nodes = []
     for i in range(n):
-        if parents[i] not in unique_nodes:
-            unique_nodes.append(parents[i])
+        if parents[i] != -1:
+            nodes[parents[i]].append(i)
+        elif parents[i] == -1:
+            root = i
     
-    max_height = len(unique_nodes)
-
-    return max_height
+    def dfs(node):
+        if not nodes[node]:
+            return 1
+        else:
+            max_height = 0
+            tree_lenght = (dfs(node_child) for node_child in nodes[node])
+            max_height = max(tree_lenght)
+            return max_height + 1
+    
+    return dfs(root)
 
 
 def main():
